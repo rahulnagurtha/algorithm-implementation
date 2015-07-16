@@ -98,7 +98,7 @@ typedef struct ele {
 }node;
  
 typedef struct element {
-	int num,two,three,five;
+	int two,three,five;
 }nodeone;
  
 #define si(i)                   scanf("%d",&i)
@@ -186,61 +186,61 @@ int main()
 			lb = Ceil(l,bsize);
 			rb = Ceil(r,bsize);
 			if(lb == rb) {
-				for (int i = l; i <= r; ++i) {
-					if(p == 2 && a[i].num % 2 == 0) {
-						a[i].num /= 2;
-						a[i].two--;
+				for (int j = l; j <= r; ++j) {
+					if(p == 2 && a[j].num % 2 == 0) {
+						a[j].num /= 2;
+						a[j].two--;
 					}
-					if(p == 3 && a[i].num % 3 == 0) {
-						a[i].num /= 3;
-						a[i].three--;
+					if(p == 3 && a[j].num % 3 == 0) {
+						a[j].num /= 3;
+						a[j].three--;
 					}
-					if(p == 5 && a[i].num % 5 == 0) {
-						a[i].num /= 5;
-						a[i].five--;
+					if(p == 5 && a[j].num % 5 == 0) {
+						a[j].num /= 5;
+						a[j].five--;
 					}
 				}
 			}
 			else {
-				for (int i = l; i <= lb*(bsize); ++i) {
-					if(p == 2 && a[i].num % 2 == 0) {
-						a[i].num /= 2;
-						a[i].two--;
+				for (int j = l; j <= lb*(bsize); ++j) {
+					if(p == 2 && a[j].num % 2 == 0) {
+						a[j].num /= 2;
+						a[j].two--;
 					}
-					if(p == 3 && a[i].num % 3 == 0) {
-						a[i].num /= 3;
-						a[i].three--;
+					if(p == 3 && a[j].num % 3 == 0) {
+						a[j].num /= 3;
+						a[j].three--;
 					}
-					if(p == 5 && a[i].num % 5 == 0) {
-						a[i].num /= 5;
-						a[i].five--;
+					if(p == 5 && a[j].num % 5 == 0) {
+						a[j].num /= 5;
+						a[j].five--;
 					}
 				}
 				lb++;
-				for (int i = r; i >= 1+(rb-1)*(bsize); --i) {
-					if(p == 2 && a[i].num % 2 == 0) {
-						a[i].num /= 2;
-						a[i].two--;
+				for (int j = r; j >= 1+(rb-1)*(bsize); --j) {
+					if(p == 2 && a[j].num % 2 == 0) {
+						a[j].num /= 2;
+						a[j].two--;
 					}
-					if(p == 3 && a[i].num % 3 == 0) {
-						a[i].num /= 3;
-						a[i].three--;
+					if(p == 3 && a[j].num % 3 == 0) {
+						a[j].num /= 3;
+						a[j].three--;
 					}
-					if(p == 5 && a[i].num % 5 == 0) {
-						a[i].num /= 5;
-						a[i].five--;
+					if(p == 5 && a[j].num % 5 == 0) {
+						a[j].num /= 5;
+						a[j].five--;
 					}
 				}
 				rb--;
 				if(lb <= rb) {
 					if(p == 2) {
-    					for (int i = lb; i <= rb; ++i) block[i].two++;
+    					for (int j = lb; j <= rb; ++j) block[j].two++;
 					}
 					else if(p == 3) {
-						for (int i = lb; i <= rb; ++i) block[i].three++;
+						for (int j = lb; j <= rb; ++j) block[j].three++;
 					}
 					else {
-						for (int i = lb; i <= rb; ++i) block[i].five++;
+						for (int j = lb; j <= rb; ++j) block[j].five++;
 					}
 				}
 			}
@@ -248,13 +248,13 @@ int main()
 		else {
 			cin >> L >> d;
 			lb = Ceil(L,bsize);
-			for (int i = 1 + (lb-1)*(bsize); i <= lb*(bsize); ++i) {
-				a[i].num /= two[min(a[i].two,block[lb].two)];
-				a[i].two -= min(a[i].two,block[lb].two);
-				a[i].num /= three[min(a[i].three,block[lb].three)];
-				a[i].three -= min(a[i].three,block[lb].three);
-				a[i].num /= five[min(a[i].five,block[lb].five)];
-				a[i].five -= min(a[i].five,block[lb].five);
+			for (int j = 1 + (lb-1)*(bsize); j <= lb*(bsize); ++j) {
+				a[j].num /= two[min(a[j].two,block[lb].two)];
+				a[j].two -= min(a[j].two,block[lb].two);
+				a[j].num /= three[min(a[j].three,block[lb].three)];
+				a[j].three -= min(a[j].three,block[lb].three);
+				a[j].num /= five[min(a[j].five,block[lb].five)];
+				a[j].five -= min(a[j].five,block[lb].five);
 			}
 			block[lb].two = block[lb].three = block[lb].five = 0;
 			a[L].num = d;
@@ -283,4 +283,4 @@ int main()
 	}
 	for (int i = 1; i <= n; ++i) cout << a[i].num << " ";
     return 0;
-}  
+} 
